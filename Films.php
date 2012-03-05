@@ -31,7 +31,7 @@ $db = new Db;
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
-$("#formcom").submit(function(){
+/*$("#formcom").submit(function(){
 	$("#loader").show();
 	num_film = $(this).find("input[name=num_film]").val();
 	Aujourdhui = new Date;
@@ -50,7 +50,7 @@ $("#formcom").submit(function(){
                 $("h4").fadeOut();
                 $("#formcom").fadeOut();
                 clicked = 0;
-        });
+        });*/
 	/*else {
             alert("Veuillez cliquer qu'une seule fois svp");}
 	return false;*/
@@ -103,7 +103,7 @@ onmouseout="javascript:document.getElementById('titre').style.textShadow='none';
 if (isset($_GET['num_film']))
 	{
 		$num_film = (int) mysql_real_escape_string($_GET['num_film']);
-$films = $db->queryArray("SELECT * FROM film LEFT JOIN genre ON genre.Num_genre = film.Num_genre HAVING num_film=".$num_film.";");
+$films = $db->queryArray("SELECT * FROM film LEFT JOIN genre ON genre.code_allocine = film.Num_genre LEFT JOIN realisateur ON realisateur.code_allocine = film.num_real HAVING num_film=".$num_film.";");
 if (empty($films)){echo "<span class='films' style='text-align:center; margin-left:325px'><br>Ce film n'existe pas!<br></span>";} 
 foreach ($films as $film)
 {
@@ -118,15 +118,13 @@ foreach ($films as $film)
 	        // On affiche le contenu du billet
 	        echo htmlspecialchars($film->synopsis); echo "<br>";
 	        $Num_genre = htmlspecialchars($film->Num_genre);
-	      echo "<span onclick=location.href='Films_genre.php?Num_genre=$Num_genre' style='cursor:pointer;'>";	      
- 		echo"<br><b><em>Genre: </b></em>"; echo htmlspecialchars($film->genre); echo "</span>";
-                
-
+                echo "<span onclick=location.href='Films_genre.php?Num_genre=$film->num_genre' style='cursor:pointer;'>";	      
+ 		echo"<br><b><em>Genre: </b></em>"; echo htmlspecialchars($film->Genre); echo "</span>";
 	        //$num_real = htmlspecialchars($film->Num_real);
 	        $Annee = $film->Annee;
 	        echo "<em><br> <b>Réalisateur: </b></em>";
 	        //echo "<span onclick=location.href='Films_real.php?num_real=$num_real' style='cursor:pointer;'>";
-	        //echo htmlspecialchars($film->realisateur); echo" "; echo htmlspecialchars($film->prenom_real); echo"</span>";
+	        echo htmlspecialchars($film->real); echo" ";echo"</span>";
 	        echo "<span onclick=location.href='Films_annee.php?Annee=$Annee' style='cursor:pointer;'>";
 	        echo "<em><br><b>Année: </b></em>"; echo htmlspecialchars($film->Annee); echo"</span>";  	
 	        ?><br>
@@ -180,15 +178,15 @@ $result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error());
 while ($donnees = mysql_fetch_array($result))
 	{
         
-	echo "<div id='comm'".htmlspecialchars($num_com)."'>";
-	echo htmlspecialchars($num_com); echo 'comm'.htmlspecialchars($num_com);
-	echo "<span style='text-decoration:underline; font-weight:bold; margin-left:10px;'>".$donnees['pseudo']; echo "</span> le "; echo htmlspecialchars($donnees['date']); echo " : ";
-	echo "<div id='contenu_comm'></p>"; echo htmlspecialchars($donnees['commentaire']); 
-	if((isset($_SESSION['login'])) AND ($_SESSION['login'] == 'admin')) { ?><span style='float:right;font-weight:bold;' onclick="suppr(<?php echo htmlspecialchars($num_film);?>,<?php echo htmlspecialchars($num_commentaire);?>, <?php echo htmlspecialchars($num_com);?>)"> <img src=Images/fermer.png alt='Supprimer le commentaire' title='Supprimer le commentaire'></span> <?php }
- echo "</p></div>";
- 	echo "</div>";
-     $num_commentaire = $donnees['num_commentaire'];
-     $num_com++;
+            echo "<div id='comm'".htmlspecialchars($num_com)."'>";
+            echo htmlspecialchars($num_com); echo 'comm'.htmlspecialchars($num_com);
+            echo "<span style='text-decoration:underline; font-weight:bold; margin-left:10px;'>".$donnees['pseudo']; echo "</span> le "; echo htmlspecialchars($donnees['date']); echo " : ";
+            echo "<div id='contenu_comm'></p>"; echo htmlspecialchars($donnees['commentaire']); 
+            if((isset($_SESSION['login'])) AND ($_SESSION['login'] == 'admin')) { ?><span style='float:right;font-weight:bold;' onclick="suppr(<?php echo htmlspecialchars($num_film);?>,<?php //echo htmlspecialchars($num_commentaire);?>, <?php echo htmlspecialchars($num_com);?>)"> <img src='Images/fermer.png' alt='Supprimer le commentaire' title='Supprimer le commentaire'></span> <?php }
+            echo "</p></div>";
+            echo "</div>";
+        $num_commentaire = $donnees['num_commentaire'];
+        $num_com++;
      }
      $date = getdate();
 
@@ -202,7 +200,7 @@ while ($donnees = mysql_fetch_array($result))
 	
 									<!----------- AJOUT de comm ---------------->
  <span class="films" style="text-align:center; font-weight:bold;"><br><h4>Ajouter un commentaire:</h4>
-<form id="formcom" action='' style="margin-left:200px;" method="post">
+<form id="formcom" action='Films_post.php' style="margin-left:200px;" method="post">
 <table>
         <input type="hidden" name="num_film" value="<?php if(isset($_GET['num_film'])) {echo (int) htmlspecialchars($_GET['num_film']);}?>">
         <tr><td><label for="pseudo">Pseudo :</label> </td> <td><input type="text" name="pseudo" id="pseudo"><br></td></tr>

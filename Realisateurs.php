@@ -60,7 +60,7 @@ echo"<SELECT name='real' onChange='location=this.options[this.selectedIndex].val
 if (empty($donnees[0])){echo "<span class='films' style='text-align:center; margin-left:325px'><br>Ce réalisateur n'existe pas!<br></span>";} 
 
    while($donnees = mysql_fetch_array($result))
-    {echo "<OPTION value='Realisateurs.php?num_real=$donnees[0]'>"; echo htmlspecialchars($donnees[1]); echo "  "; echo htmlspecialchars($donnees[2]); echo "</OPTION>";} 
+    {echo "<OPTION value='Realisateurs.php?num_real=$donnees[0]'>"; echo htmlspecialchars($donnees[1]); echo "</OPTION>";} 
   echo "</SELECT>"; 
 
 if (!empty($_GET['Num_real'])){$num_real = (int) mysql_real_escape_string($_GET['Num_real']);}
@@ -70,9 +70,9 @@ $realisateurs = $db->queryArray("SELECT * FROM realisateur WHERE Num_real=".$num
 foreach ($realisateurs as $real)
 { ?>
 	<div class="films">
-<p><h3><?php echo htmlspecialchars($real->nom_real); ?> </h3>
-	        <em><b>Nom: </b><?php echo htmlspecialchars($real->nom_real); ?><br></em>
-	        <em><b>Prénom: </b><?php echo htmlspecialchars($real->prenom_real); echo "<br></em>";
+<p><h3><?php echo htmlspecialchars($real->real); ?> </h3>
+
+	        <?php  echo "<br></em>";
  if((isset($_SESSION['login'])) AND ($_SESSION['login'] == 'admin')) {echo "<span style='float:right;' <i><a href='Modif_reals.php?Num_real=$real->Num_real;'> Modifier le réalisateur</a></i></span>"; }
  } ?>
    <h4>Filmographie : </h4>
@@ -91,7 +91,7 @@ else { $num_real = 0; echo "<h4 style='color:white;'>Sélectionnez un réalisate
 		
 		  $a = 1; // nombre d'éléments à extraire aléatoirement
 		$reals = $db->queryArray("SELECT * FROM realisateur WHERE Num_real = $num_real");
-	    foreach ($reals as $real) {?><img src="<?php echo htmlspecialchars($real->image);?>">
+	    foreach ($reals as $real) {?><img src="<?php echo htmlspecialchars($real->photo);?>">
 	    <?php }?>
 </div>	
 </body>

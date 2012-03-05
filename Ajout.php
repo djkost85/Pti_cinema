@@ -34,7 +34,7 @@ if (!empty($_POST)){
     if (!saveData($post)){
         echo "<span class='liens' style='cursor:pointer;' onclick=location.href='log.php'>Retour</span>";
     }
-    print_r($post);
+    //print_r($post);
 }
 
 if ((empty($_POST['titre_f'])) OR (empty($_POST['duree'])) OR (empty($_POST['synopsis'])) OR (empty($_POST['genre'])) OR (empty($_POST['annee'])))
@@ -49,9 +49,10 @@ $duree = (int)  mysql_real_escape_string($_POST['duree']);
 $synopsis = mysql_real_escape_string($_POST['synopsis']);
 $affiche = mysql_real_escape_string($_POST['affiche']);
 $num_genre = mysql_real_escape_string($_POST['genre']);
-$real = (int) mysql_real_escape_string($_POST['realisateur']);
+$real = mysql_real_escape_string($_POST['code_real']);
 $annee = mysql_real_escape_string($_POST['annee']);
 $video = str_replace("'", "\"", mysql_real_escape_string($_POST['video']));
+print_r($_POST);
 
 
 $sql = 'INSERT INTO film(num_film, titre, duree, synopsis, affiche, video, Num_genre, num_real, annee) VALUES(NULL, "'.$titre.'", "'.$duree.'", "'.$synopsis.'", "'.$affiche.'", "'.$video.'", "'.$num_genre.'", "'.$real.'", "'.$annee.'")'; 
@@ -76,11 +77,11 @@ $sql = 'INSERT INTO film(num_film, titre, duree, synopsis, affiche, video, Num_g
 <p id="pdf" onmouseover="javascript:document.getElementById('pdf').style.textShadow='#fff 0px 0px 5px';"
 onmouseout="javascript:document.getElementById('pdf').style.textShadow='none';">Film aleatoire: </p>
 <div class="cadre"><img src="<?php
-/*$films = $db->queryArray("SELECT * FROM film WHERE num_film = ".$dernier_film.";");
+$films = $db->queryArray("SELECT * FROM film WHERE num_film = ".$dernier_film.";");
 foreach ($films as $film){
- echo htmlspecialchars($film->affiche);}*/?> "></div>
+ echo htmlspecialchars($film->affiche);}?> "></div>
 </div>
-<?php //} ?>
+<?php } ?>
 </div>
 </div>
 </body>

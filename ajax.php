@@ -46,6 +46,7 @@ function getFilmsInfos(){
         $r['duree'] = $film['runtime']/60;
         $r['synopsis'] = utf8_encode($film['synopsis']);
         $real = $film['castingShort']['directors'];
+        $code_genre = $film['genre'][0]['code'];
         $code_real = $film['castMember']['0']['person']['code'];
         $code_video = $film['trailer']['code'];
         $video = $helper->media($code_video);
@@ -65,6 +66,7 @@ function getFilmsInfos(){
                         'duree' => '',
                         'annee' => '',
                         'code_real' => '',
+                        'code_genre' => '',
                         'realisateur' => '',
                         'affiche' => '',
                         'synopsis' => '',
@@ -74,6 +76,7 @@ function getFilmsInfos(){
         $return['annee'] = $donnees['movie']['0']['productionYear'];
         $return['code_real'] = $code_real;
         $return['realisateur'] = $real;
+        $return['code_genre'] = $code_genre;
         $return['affiche'] = $img->url();
         $return['synopsis'] = utf8_encode($film['synopsis']);
         $return['video'] = $video_url;

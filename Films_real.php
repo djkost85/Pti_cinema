@@ -58,7 +58,7 @@ echo"<br><br><SELECT name='num_real' onChange='location=this.options[this.select
 if (empty($donnees[0])){echo "<span class='films' style='text-align:center; margin-left:325px'><br>Ce réalisateur n'existe pas!<br></span>";} 
 
    while($donnees = mysql_fetch_array($result))
-    {echo "<OPTION value='Films_real.php?num_real=$donnees[0]'>"; echo htmlspecialchars($donnees[0]); echo "  "; echo htmlspecialchars($donnees[1]); echo "  ";
+    {echo "<OPTION value='Films_real.php?num_real=$donnees[0]'>"; echo htmlspecialchars($donnees[0]); echo "  ";  echo "  ";
     echo htmlspecialchars($donnees[2]); echo "</OPTION>";} 
   echo "</SELECT>";
        ?>
@@ -68,7 +68,7 @@ mysql_select_db('Films',$connexion);
 if (isset($_GET['page'])){$page = (int) mysql_real_escape_string($_GET['page']); $limit = ($page - 1) * 3;
 } else {$limit = 0; }
 $Num_real = $_GET['num_real'];
-$sql = "SELECT * , genre.genre, realisateur.nom_real FROM film INNER JOIN genre ON genre.Num_genre = film.Num_genre INNER JOIN realisateur ON realisateur.Num_real = film.Num_real HAVING film.Num_real=".$Num_real." LIMIT ".$limit.",3;";
+$sql = "SELECT * FROM film INNER JOIN genre ON genre.Num_genre = film.Num_genre INNER JOIN realisateur ON realisateur.Num_real = film.Num_real HAVING film.Num_real=".$Num_real." LIMIT ".$limit.",3;";
 $result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error()); 
 Echo "<h3>Réalisateur: ";
 $donnees = mysql_fetch_array($result); echo htmlspecialchars($donnees['nom_real']); echo " "; echo htmlspecialchars($donnees['prenom_real']); 
@@ -131,7 +131,7 @@ $Num_real = $_GET['num_real'];
 $sql = "SELECT * FROM realisateur WHERE Num_real = ".$Num_real.";";
 $result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error()); 
 while ($donnees = mysql_fetch_assoc($result))
-{ echo $donnees['image'];} ?>"></div>
+{ echo $donnees['photo'];} ?>"></div>
 </div>
 </body>
 </html>

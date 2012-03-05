@@ -17,8 +17,23 @@ LEFT JOIN realisateur ON realisateur.Num_real = film.Num_real
 AUTOCOMPLETION
 
 
-
-GENRE ET REALISATEUR ============> input disabled
-
 Genre.code_allo en clés étrangères
 
+SUPPRESSION DE COMMENTAIRES
+
+
+
+<?php
+            $sql = "SELECT * FROM realisateur";
+            $result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error());
+echo'<td> <SELECT id="realisateur" name="num_real">';
+echo '<option></option>';
+   while($donnees = mysql_fetch_assoc($result))
+    {
+       
+       echo "<OPTION value='".$donnees['code_allocine']."'>";
+       echo htmlspecialchars($donnees['real']); //echo htmlspecialchars($donnees['prenom_real']);
+    //echo $donnees['code_allocine'];
+    echo "</OPTION>";} 
+  echo "</SELECT>";
+        ?>

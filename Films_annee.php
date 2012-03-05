@@ -52,7 +52,7 @@ Require_once 'Connexion.php';
 if (isset($_GET['page'])){$page = (int) mysql_real_escape_string($_GET['page']); $limit = ($page - 1) * 3;
 } else {$limit = 0; }
 $Annee = (int) mysql_real_escape_string($_GET['Annee']); $num_film = '';
-$sql = "SELECT * , genre.genre, realisateur.nom_real FROM film LEFT JOIN genre ON genre.Num_genre = film.Num_genre LEFT JOIN realisateur ON realisateur.Num_real = film.Num_real HAVING annee=".$Annee." LIMIT ".$limit.",3;";
+$sql = "SELECT * FROM film LEFT JOIN genre ON genre.code_allocine = film.Num_genre LEFT JOIN realisateur ON realisateur.code_allocine = film.Num_real HAVING annee=".$Annee." LIMIT ".$limit.",3;";
 $result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error()); 
 Echo "<h3>Année "; 
 echo $Annee; echo "</h3><br>";
@@ -69,7 +69,7 @@ while ($donnees = mysql_fetch_assoc($result))
 	       <td> <img align="middle;" alt="affiche" name="affiche" src="<?php echo htmlspecialchars($donnees['affiche']);?>"></td>
 	       <td> <span style="cursor:pointer;" onclick="location.href='Films.php?num_film=<?php echo htmlspecialchars($donnees['num_film']);?>'"> <?php
 	        // On affiche le contenu du billet
-	        echo nl2br(htmlspecialchars($donnees['resume']));?></span></td>
+	        echo nl2br(htmlspecialchars($donnees['synopsis']));?></span></td>
 	        </tr><br /></table>
 	      <?php echo "<br><em><b>Durée: </b>"; echo htmlspecialchars($donnees['duree']);
 $Num_genre = $donnees['Num_genre'];
@@ -79,7 +79,7 @@ $Num_genre = $donnees['Num_genre'];
 	        $Annee = htmlspecialchars($donnees['Annee']);
 	        echo "<em><br> <b>Réalisateur: </b></em>";
 	        echo "<span onclick=location.href='Films_real.php?num_real=$num_real' style='cursor:pointer;'>";
-	        echo htmlspecialchars($donnees['nom_real']); echo" "; echo htmlspecialchars($donnees['prenom_real']); echo"</span>";
+	        echo htmlspecialchars($donnees['real']); echo"</span>";
      //if((isset($_SESSION['login'])) AND ($_SESSION['login'] == 'admin')) {echo "<span style='float:right;' <i><a href='Modif_films.php?num_film='$donnees['num_film']'> Modifier le film</a></i></span>"; }?>
 </em> 
  <br> 

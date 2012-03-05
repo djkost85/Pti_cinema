@@ -70,15 +70,16 @@ if (isset ($_POST['login']) AND isset ($_POST['mdp']))
                     data: "search="+$('#titre_f').val(),
                     success: function(data){
                         var film = jQuery.parseJSON(data);
-                        var selectBox = document.forms[0].num_real;
                         //form = "#realisateur[value="+film['realisateur'];
                         //$(form).attr("selected", "selected");
                         for (i in film){
                             div = '#'+i;
                             $(div).val(film[i]);
                         }
-                        document.getElementById('realisateur').value = film.code_real;
-                        alert(film.code_real);
+                        document.getElementById('code_genre').value = film.code_genre;
+                        alert(film.code_genre);
+                        alert(film.realisateur);
+                        document.getElementById('code_real').value = film.code_real;
                     }
                 });
             }
@@ -118,12 +119,12 @@ if (isset ($_POST['login']) AND isset ($_POST['mdp']))
             Require_once 'Connexion.php';
             $sql = "SELECT * FROM genre ORDER BY genre ASC";
             $result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error());?>
-
-            <td><SELECT id="genre" name='genre'>
-                    <OPTION>
-            <?php
+                    <?php unset($v);?>
+            <td><SELECT id="code_genre" name='genre'><option></option>
+                    <?php
+                    
             while($donnees = mysql_fetch_assoc($result)){
-                echo "<OPTION "; if (isset($v)) {echo "value=".$v['genre']."selected=selected disabled=disabled";} else {echo "value=".$donnees['Num_genre']." disabled=disabled>";} echo htmlspecialchars($donnees['Genre']); echo "</OPTION>";
+                echo "<OPTION id='code_genre'"; if (isset($v)) {echo "value=".$v['genre'].">";} else {echo "value=".$donnees['code_allocine'].">";} echo htmlspecialchars($donnees['Genre']); echo "</OPTION>";
             }?>
                 </SELECT>
 	    </td>
@@ -133,20 +134,7 @@ if (isset ($_POST['login']) AND isset ($_POST['mdp']))
 	      </tr>
             <tr>
             <td>Réalisateur:</td>
-            <?php
-            $sql = "SELECT * FROM realisateur";
-            $result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error());
-echo'<td> <SELECT id="realisateur" name="num_real">';
-echo '<option></option>';
-   while($donnees = mysql_fetch_assoc($result))
-    {
-       
-       echo "<OPTION value='".$donnees['code_allocine']."'>";
-       echo htmlspecialchars($donnees['real']); //echo htmlspecialchars($donnees['prenom_real']);
-    //echo $donnees['code_allocine'];
-    echo "</OPTION>";} 
-  echo "</SELECT>";
-        ?>
+            
                 <td>
                 <?php echo "<input type='text' id='realisateur' "; if(isset($v)){ echo "value='".$v['realisateur']."'"; } echo "name='realisateur'>";?><span title="Ajouter un réalisateur" onclick="post();" style="cursor:pointer;"> +<br><br></span>
                 </td>

@@ -62,23 +62,23 @@ mysql_select_db('Films',$connexion);
 if (isset($_GET['page'])){$page = (int) mysql_real_escape_string($_GET['page']); $limit = ($page - 1) * 3;
 } else {$limit = 0; }
 if (!empty($_GET['Num_genre'])) {$Num_genre = (int) mysql_real_escape_string($_GET['Num_genre']); $num_film = ''; 
-$sql = "SELECT *, genre.genre, realisateur.nom_real FROM film LEFT JOIN genre ON genre.Num_genre = film.Num_genre LEFT JOIN realisateur ON realisateur.Num_real = film.Num_real HAVING film.Num_genre=".$Num_genre." LIMIT ".$limit.",3;";
+$sql = "SELECT *, genre.Genre, realisateur.real FROM film LEFT JOIN genre ON genre.code_allocine = film.Num_genre LEFT JOIN realisateur ON realisateur.code_allocine = film.Num_real HAVING film.Num_genre = ".$Num_genre." LIMIT ".$limit.",3;";
 $result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error()); 
+
 Echo "<h3>Genre: "; 
 $donnees = mysql_fetch_array($result); echo $donnees['Genre']; 
 echo "</h3><br>";
 $result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error()); 
 
 while ($donnees = mysql_fetch_assoc($result))
-{
-?>
+{ ?>
 <div class="films">
 <p><h3 style="cursor:pointer;" onclick="location.href='Films.php?num_film=<?php echo htmlspecialchars($donnees['num_film']);?>'">
 <?php echo htmlspecialchars($donnees['titre']); ?> </h3>
  		<table><tr> <td> <img align="middle;" alt="affiche" name="affiche" src="<?php echo htmlspecialchars($donnees['affiche']);?>"></td>
 	       <td> <span style="cursor:pointer;" onclick="location.href='Films.php?num_film=<?php echo htmlspecialchars($donnees['num_film']);?>'"> <?php
 	       // Affichage du film
-	        echo nl2br(htmlspecialchars($donnees['resume']));?></span></td></tr><br /></table>
+	        echo nl2br(htmlspecialchars($donnees['synopsis']));?></span></td></tr><br /></table>
 	      <?php echo "<br><em><b>Durée: </b>"; echo htmlspecialchars($donnees['duree']);  echo"min";
 	        $num_real = (int) htmlspecialchars($donnees['Num_real']);
 	        $Annee = htmlspecialchars($donnees['Annee']);
@@ -86,7 +86,7 @@ while ($donnees = mysql_fetch_assoc($result))
 	        echo "<em><br><b>Année: </b></em>"; echo htmlspecialchars($donnees['Annee']); echo"</span>";
 	       echo "<em><br> <b>Réalisateur: </b></em>";
 	        echo "<span onclick=location.href='Films_real.php?num_real=$num_real' style='cursor:pointer;'>";
-	        echo htmlspecialchars($donnees['nom_real']); echo" "; echo htmlspecialchars($donnees['prenom_real']); echo"</span>";
+	        echo htmlspecialchars($donnees['real']);echo"</span>";
      //if((isset($_SESSION['login'])) AND ($_SESSION['login'] == 'admin')) {echo "<span style='float:right;' <i><a href='Modif_films.php?num_film='$donnees['num_film']'> Modifier le film</a></i></span>"; }?>
 </em> <br></b><br><br></p>
    </div>
@@ -98,9 +98,11 @@ else {$Num_genre = 0; echo "<h3>Genre inconnu</h3>";}
  <?php 
  //Comptage du nb de films pour faire les pages
  $sql = "SELECT COUNT(*) as nb_films FROM film WHERE Num_genre=".$Num_genre.";";
+
  $result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error()); 
 $donnees = mysql_fetch_array($result);
-$nb_pages = $donnees[0] / 3; 
+$nb_pages = $donnees[0] / 3;
+
 if (isset($_GET['page'])) {
 $cur_page = $_GET['page'];} else {$cur_page = 1;}
 for ($i = 1; $i <= ceil($nb_pages); $i++){

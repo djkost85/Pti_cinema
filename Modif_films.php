@@ -42,7 +42,7 @@ Require_once 'Connexion.php';
 if(isset($_GET['num_film'])){
 $num_film = (int) mysql_real_escape_string($_GET['num_film']);}
 
-$sql = "SELECT *, genre.genre, realisateur.nom_real FROM film LEFT JOIN genre ON genre.Num_genre = film.Num_genre LEFT JOIN realisateur ON realisateur.Num_real = film.Num_real HAVING num_film=".$num_film.";";
+$sql = "SELECT * FROM film LEFT JOIN genre ON genre.Num_genre = film.Num_genre LEFT JOIN realisateur ON realisateur.Num_real = film.Num_real HAVING num_film=".$num_film.";";
 $result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error()); 
 $sql2 = "SELECT * FROM GENRE";
 $result2 = mysql_query($sql2)or die ('Erreur SQL !'.$sql2.'<br />'.mysql_error()); 
@@ -56,9 +56,9 @@ while ($donnees = mysql_fetch_assoc($result))
 	        <h3 onclick="location.href='Films.php?num_film=<?php echo htmlspecialchars($num_film);?>'" style="cursor:pointer;">
 	            <?php echo htmlspecialchars($donnees['titre']); ?> 
 	        </h3>
-	        <?php $resume = htmlspecialchars($donnees['resume']); $titre = htmlspecialchars($donnees['titre']);
+	        <?php $resume = htmlspecialchars($donnees['synopsis']); $titre = htmlspecialchars($donnees['titre']);
 		$duree = htmlspecialchars($donnees['duree']); $affiche = htmlspecialchars($donnees['affiche']); $video = $donnees['video'];
-		$annee = htmlspecialchars($donnees['Annee']); $genre = htmlspecialchars($donnees['genre']); $realisateur = htmlspecialchars($donnees['nom_real']);?>
+		$annee = htmlspecialchars($donnees['Annee']); $genre = htmlspecialchars($donnees['Genre']); $realisateur = htmlspecialchars($donnees['real']);?>
        
 	     <?php echo"<form action='Films_modif.php' method='post' enctype='multipart/form-data'>
 	     <input type='hidden' name='num_film' value='$num_film'>
@@ -67,9 +67,9 @@ while ($donnees = mysql_fetch_assoc($result))
 	    	$Num_real = htmlspecialchars($donnees['Num_real']);
    while($data2 = mysql_fetch_assoc($result3))
     {	 
-  		echo '<option value="'.htmlspecialchars($data2['Num_real']).'" ';
-		if ($data2['Num_real'] == $donnees['Num_real']) {echo "selected='selected'";} // Si le réalisateur parcouru depuis la table Realisateur est celui du film, on le "selected"
-		echo '>'.htmlspecialchars($data2['nom_real']).' '.htmlspecialchars($data2['prenom_real']).'</option>';
+  		echo '<option value="'.htmlspecialchars($data2['code_allocine']).'" ';
+		if ($data2['real'] == $donnees['real']) {echo "selected='selected'";} // Si le réalisateur parcouru depuis la table Realisateur est celui du film, on le "selected"
+		echo '>'.htmlspecialchars($data2['real']).'</option>';
     }
   echo "</SELECT>"; 
   echo "<span title='Ajouter un réalisateur' onclick=location.href='Ajout_real.php' style='cursor:pointer; text-shadow:#fff 0px 0px 10px'> +</span><br>";
@@ -77,8 +77,8 @@ while ($donnees = mysql_fetch_assoc($result))
 			<label style='display: block;width: 150px;float: left;' for='Genre'><b>Genre:</b></label> "; echo "<SELECT name='Num_genre'> ";
 			while($data = mysql_fetch_assoc($result2))
 			{
-			echo '<option value="'.htmlspecialchars($data['Num_genre']).'" ';
-			if ($data['Num_genre'] == $donnees['Num_genre']) {echo "selected='selected'";} // Si le genre parcouru depuis la table genre est celui du film, on le "selected"
+			echo '<option value="'.htmlspecialchars($data['code_allocine']).'" ';
+			if ($data['code_allocine'] == $donnees['code_allocine']) {echo "selected='selected'";} // Si le genre parcouru depuis la table genre est celui du film, on le "selected"
 echo '>'.htmlspecialchars($data['Genre']).'</option>';
 	 } 
 	 
