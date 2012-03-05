@@ -1,0 +1,172 @@
+
+.pdf a:hover img, .pdf a:focus img{
+	opacity:1;
+}
+
+#corps .cadre{
+	position:absolute;
+	top:210px;
+	margin-right:25px;
+	margin-left:622px;
+	height:213px;
+	width:160px;
+	border:thin white solid;
+}
+
+.logo
+{
+	border-radius: 10px 10px 10px 10px;
+}
+
+
+h3{
+	text-align:center;
+}
+
+
+#pdf{
+	position:absolute;
+	top:165px;
+	margin-right:40px;
+	margin-top:19px;
+	margin-left:658px;
+	color:white;
+	font-family:"Minion Pro";
+	font-weight:bold;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	transition: color 0s ease-in-out;
+}
+
+input{
+	display:block;
+	padding-top:5px;
+}
+
+label{
+	display:block;
+	margin-top:7px;
+}
+
+#form_contact{
+	color:white;
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius: 4px 4px 4px 4px;
+	font-weight:bold;
+}
+.liens{
+	color:white;
+	font-family:"Minion Pro";
+	font-weight:lighter;
+	text-align:center;
+	text-shadow:#fff 0px 0px 5px;
+	cursor:pointer;
+	font-weight:bolder;font-style:italic;
+}
+
+#menu{
+	margin-bottom:5px;
+}
+
+body
+{
+	background-color:#212121;
+	background-repeat:no-repeat; 
+	width: 1024px;
+   	margin: auto; /* Pour centrer la page */
+   	margin-top: 50px; /* Pour éviter de coller avec le haut de la fenêtre du navigateur. */
+  	margin-bottom: 150px;    /* '' avec le bas de la fenetre du navigateur */
+}
+
+#titre
+{
+	margin-left:15px;
+	margin-bottom:35px;
+	text-align:center;
+	font-family:"Century Gothic";
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	transition: color 0s ease-in-out;
+}
+
+#corps .texte{
+	color:white;
+	text-align:center;
+	margin-top:10px;
+}
+
+h3{
+	color:white;
+
+	text-shadow:#fff 0px 0px 5px;
+
+}
+
+#corps{
+	width:800px;
+	height:75%;
+	background-color:#171717;
+	padding-left:15px;
+	/*border:thin solid white;
+	border-style:groove;*/
+	margin:auto;
+	/*-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	border-radius: 0 20px 0 20px;*/
+}
+
+#c
+{	
+	font-size:xx-large;
+	font-style:normal;	
+	color:white;
+	margin:auto;
+}
+
+.v
+{
+	font-size:xx-large;
+	font-weight:bold;
+	text-decoration:none;
+	color:white;
+	text-shadow:#fff 0px 0px 5px;
+	margin:auto;
+}
+
+.name{
+	color:white;
+	font-family:"Minion Pro";
+	font-weight:bolder;
+	text-shadow:#fff 0px 0px 5px;
+}
+
+a
+{
+	text-decoration:none;
+}
+
+#plus
+{
+	color:white;
+	font-family:"Minion Pro";
+	font-weight:bolder;
+	text-shadow:#fff 0px 0px 10px;
+	cursor:pointer;
+}
+
+.logo
+{
+	border-radius: 10px 10px 10px 10px;
+}
+
+.value
+{
+	color:white;
+	font-family:"Minion Pro";
+	font-weight:lighter;	
+}

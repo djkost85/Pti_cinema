@@ -1,0 +1,24 @@
+
+Film_genre.php  ----------> le num_genre = 1 *(action) ne s'affiche pas dans le select
+
+DANS les cinemas : programmation du cinema --------> dans programmation du cinema : liens pour ajouter des films
+
+ suppression ajax
+
+
+commentaires ------- ajout
+
+
+Classe FORM
+
+LEFT JOIN realisateur ON realisateur.Num_real = film.Num_real
+
+
+AUTOCOMPLETION
+
+
+
+GENRE ET REALISATEUR ============> input disabled
+
+Genre.code_allo en clés étrangères
+

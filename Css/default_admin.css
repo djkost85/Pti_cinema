@@ -1,0 +1,172 @@
+﻿
+.pdf a img{
+	text-decoration:none;
+	float:right;
+	margin-right:5px;
+	margin-top:5px;
+	border:none;
+	opacity:0.35;
+}
+
+.pdf a:hover img, .pdf a:focus img{
+	opacity:1;
+}
+
+#menu{
+	margin-bottom:5px;
+}
+
+
+#corps .cadre{
+	position:absolute;
+	top:210px;
+	margin-right:25px;
+	margin-left:622px;
+	margin:auto;
+	height:213px;
+	width:160px;
+	border:thin white solid;
+}
+
+#cadre2{
+	height:400px;
+	width:450px;
+	margin-top:5px;
+	padding-left:10px;
+
+	border:thin white solid;
+}
+
+#corps #formulaire .label{
+	width:150px;
+	/*display:block;
+	float:left;*/
+}
+
+#pdf{
+	position:absolute;
+	top:20%;
+	margin-left:655px;
+	color:white;
+	font-family:"Minion Pro";
+	font-weight:bold;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	transition: color 0s ease-in-out;
+}
+
+.liens{
+	color:white;
+	font-family:"Minion Pro";
+	font-weight:lighter;	
+	text-shadow:#fff 0px 0px 5px;
+	font-weight:bolder;font-style:italic;
+}
+
+body
+{
+	background-color:#212121;
+	background-repeat:no-repeat; 
+	width: 1024px;
+   	margin: auto; /* Pour centrer la page */
+   	margin-top: 80px; /* Pour Ã©viter de coller avec le haut de la fenÃªtre du navigateur. */
+  	margin-bottom: 150px;    /* '' avec le bas de la fenetre du navigateur */
+}
+
+#titre
+{
+	margin-left:15px;
+	margin-bottom:35px;
+	text-align:center;
+	font-family:"Century Gothic";
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	transition: color 0s ease-in-out;
+}
+
+.texte{
+	color:silver;
+}
+
+.liens{
+	color:white;
+	font-family:"Minion Pro";
+	font-weight:lighter;
+	text-align:center;
+	text-shadow:#fff 0px 0px 5px;
+	cursor:pointer;
+	font-weight:bolder;font-style:italic;
+}
+
+#corps
+{
+	width:800px;
+	height:75%;
+	background-color:#171717;
+	padding-left:15px;
+	padding-bottom:15px;
+	margin:auto;
+	/*border:thin solid white;*/
+	/*border-style:groove;*/
+	/*margin:auto;*/
+	/*-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	border-radius: 0 20px 0 20px;*/
+}
+
+#c
+{	
+	font-size:xx-large;
+	font-style:normal;	
+	color:white;
+	margin:auto;
+}
+
+.v
+{
+	font-size:xx-large;
+	font-weight:bold;
+	text-decoration:none;
+	color:white;
+	text-shadow:#fff 0px 0px 5px;
+	margin:auto;
+}
+
+.name{
+	color:white;
+	font-family:"Minion Pro";
+	font-weight:bolder;
+	text-shadow:#fff 0px 0px 5px;
+}
+
+a
+{
+	text-decoration:none;
+}
+
+#plus
+{
+	color:white;
+	font-family:"Minion Pro";
+	font-weight:bolder;
+	text-shadow:#fff 0px 0px 10px;
+	padding-right:5px;
+	float:right;
+	cursor:pointer;
+	margin-bottom:5px;
+}
+
+.logo
+{
+	border-radius: 10px 10px 10px 10px;
+}
+
+.value
+{
+	color:white;
+	font-family:"Minion Pro";
+	font-weight:lighter;	
+}

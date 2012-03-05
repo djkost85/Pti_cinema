@@ -1,0 +1,32 @@
+<div id="allocine_blog" style="width:450px; height:350px">
+<object width="100%" height="350px">
+<param name="movie" value="http://www.allocine.fr/blogvision/18650391">
+</param>
+<param name="allowFullScreen" value="true"></param>
+<param name="allowScriptAccess" value="always"></param>
+<embed src="http://www.allocine.fr/blogvision/18650391" type="application/x-shockwave-flash" width="100%" height="100%" allowFullScreen="true" allowScriptAccess="always"></embed>
+</object></div>
+
+
+<div id="blogvision" style="width:420px; height:335px">
+<object width="100%" height="100%">
+<param name="movie" value="http://www.allocine.fr/blogvision/19209573"></param>
+<param name="allowFullScreen" value="true"></param>
+<param name="allowScriptAccess" value="always"></param>
+<embed src="http://www.allocine.fr/blogvision/19209573" type="application/x-shockwave-flash" width="100%" height="100%" allowFullScreen="true" allowScriptAccess="always"/></embed>
+</object><a href="http://www.allocine.fr/film/fichefilm_gen_cfilm=177808.html" target="_blank">GasLand</a></div>
+
+
+MISSION IMPOSSIBLE:
+
+
+<div id="blogvision" style="width:420px; height:335px">
+<object width="100%" height="100%">
+<param name="movie" value="http://www.allocine.fr/blogvision/19260260"></param>
+<param name="allowFullScreen" value="true"></param>
+<param name="allowScriptAccess" value="always"></param>
+<embed src="http://www.allocine.fr/blogvision/19260260" type="application/x-shockwave-flash" width="100%" height="100%" allowFullScreen="true" allowScriptAccess="always"/></object>
+<a href="http://www.allocine.fr/film/fichefilm_gen_cfilm=147454.html" target="_blank">Mission : Impossible - Protocole fantôme</a></div>
+
+MI:
+<div id='blogvision' style='width:420px; height:335px'><object width='100%' height='100%'><param name='movie' value='http://www.allocine.fr/blogvision/19260260'></param><param name='allowFullScreen' value='true'></param><param name='allowScriptAccess' value='always'></param><embed src='http://www.allocine.fr/blogvision/19260260' type='application/x-shockwave-flash' width='100%' height='100%' allowFullScreen='true' allowScriptAccess='always'/></object><a href="http://www.allocine.fr/film/fichefilm_gen_cfilm=147454.html" target="_blank">Mission : Impossible - Protocole fantôme</a></div>
