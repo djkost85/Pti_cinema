@@ -61,13 +61,13 @@ $sql = 'INSERT INTO film(num_film, titre, duree, synopsis, affiche, video, Num_g
       $result = mysql_query("SELECT * FROM film WHERE num_film = ".$dernier_film.";");
       while ($row = mysql_fetch_assoc($result)) 
       {
-      echo "<br>Titre: <br> ";
+      //echo "<br>Titre: <br> ";
    echo htmlspecialchars($row["titre"]);
 	}
 	
       mysql_close();
       unset($_SESSION['form']);
-      echo "<span class='retour' > <br><h4>Le film suivant a bien été ajouté! </h4><br> ";
+      echo "<span class='retour' > <br><h4>Le film a bien été ajouté! </h4><br> ";
 ?>
 </span>
 </span>
@@ -76,11 +76,11 @@ $sql = 'INSERT INTO film(num_film, titre, duree, synopsis, affiche, video, Num_g
 <p id="pdf" onmouseover="javascript:document.getElementById('pdf').style.textShadow='#fff 0px 0px 5px';"
 onmouseout="javascript:document.getElementById('pdf').style.textShadow='none';">Film aleatoire: </p>
 <div class="cadre"><img src="<?php
-$films = $db->queryArray("SELECT * FROM film WHERE num_film = ".$dernier_film.";");
+/*$films = $db->queryArray("SELECT * FROM film WHERE num_film = ".$dernier_film.";");
 foreach ($films as $film){
- echo htmlspecialchars($film->affiche);}?> "></div>
+ echo htmlspecialchars($film->affiche);}*/?> "></div>
 </div>
-<?php } ?>
+<?php //} ?>
 </div>
 </div>
 </body>
