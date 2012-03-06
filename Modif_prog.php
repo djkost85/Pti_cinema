@@ -55,15 +55,18 @@ onmouseout="javascript:document.getElementById('plus').style.textShadow='none';"
 		<span class="texte" style="font-style:italic">Cinémas: <br></span>
 		
 				<?php
+                                if (!isset($_GET['num_cin'])){
+                                    echo '<h3>Cin&eacute;ma non trouv&eacute;</h3>'; die();
+                                }
 		$connexion = mysql_connect('127.0.0.1', 'root', '');
 mysql_select_db('Films',$connexion);
-
+/********** Liste déroulante des cinémas ******/
 $sql = "SELECT * FROM cinema";
 		$result = mysql_query($sql)or die ('Erreur SQL !'.$sql.'<br />'.mysql_error());
 echo"    <SELECT name='real' onChange='location=this.options[this.selectedIndex].value'> 
     <OPTION> ";
    while($donnees = mysql_fetch_array($result))
-    {echo "<OPTION value='Modif_prog.php?num_cin=$donnees[0]'>"; echo htmlspecialchars($donnees[1]); echo "  "; echo "</OPTION>";} 
+    {echo "<OPTION value='Modif_prog.php?num_cin=$donnees[0]'>"; echo htmlspecialchars($donnees[2]); echo "  "; echo "</OPTION>";} 
   echo "</SELECT>"; 
        ?>
 		<?php
